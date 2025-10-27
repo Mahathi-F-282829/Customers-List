@@ -1,0 +1,182 @@
+/* Reset */
+* { box-sizing: border-box; margin: 0; padding: 0; }
+
+html, body, .page {
+  height: 100%;
+  width: 100%;
+  font-family: Arial, sans-serif;
+  background: #fff;
+  color: #111827;
+  display: flex;
+  flex-direction: column;
+}
+
+/* Brandbar */
+.brandbar {
+  height: 50px;
+  display: flex;
+  align-items: center;
+  padding: 0 16px;
+  border-bottom: 1px solid #e5e7eb;
+  background: #fff;
+  position: sticky;
+  top: 0;
+  z-index: 30;
+}
+.brand-logo { height: 22px; }
+
+/* Title */
+.title-row {
+  height: 42px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 0 16px;
+  font-size: 18px;
+  font-weight: 600;
+  border-bottom: 1px solid #e5e7eb;
+  background: #fff;
+  position: sticky;
+  top: 50px;
+  z-index: 25;
+}
+.count-badge {
+  font-size: 13px;
+  font-weight: 600;
+  background: #e8f7ee;
+  color: #0a8a42;
+  padding: 2px 8px;
+  border-radius: 999px;
+}
+
+/* Toolbar */
+.toolbar {
+  height: 50px;
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  gap: 12px;
+  padding: 0 16px;
+  border-bottom: 1px solid #e5e7eb;
+  background: #fff;
+  position: sticky;
+  top: 92px; /* 50 (brandbar) + 42 (title) */
+  z-index: 20;
+}
+.search-wrap { position: relative; width: 280px; }
+.search-icon {
+  position: absolute; top: 50%; left: 8px; transform: translateY(-50%);
+  width: 16px; opacity: .6;
+}
+.search-input {
+  width: 100%; height: 36px; padding: 6px 10px 6px 28px;
+  border: 1px solid #d1d5db; border-radius: 6px; outline: none;
+}
+.search-input:focus { border-color: #9ca3af; }
+
+.filters-wrap { position: relative; }
+.filter-btn {
+  height: 36px;
+  display: inline-flex; align-items: center; gap: 6px;
+  padding: 0 12px; border: 1px solid #d1d5db; border-radius: 6px;
+  background: #fff; cursor: pointer;
+}
+.filters-menu {
+  position: absolute; margin-top: 6px; background: #fff;
+  border: 1px solid #d1d5db; border-radius: 6px; padding: 6px 0;
+  box-shadow: 0 2px 6px rgba(0,0,0,.1); z-index: 40;
+}
+.filters-menu div { padding: 8px 16px; cursor: pointer; }
+.filters-menu div:hover { background: #f3f4f6; }
+
+/* Table Box */
+.table-scroll {
+  flex: 1;
+  width: 100%;
+  overflow-y: auto;
+  overflow-x: hidden;
+  margin: 12px 16px;
+  border: 1px solid #e5e7eb;
+  border-radius: 10px;
+  background: #fff;
+}
+
+/* Table */
+.customers-table {
+  width: 100%;
+  table-layout: fixed;
+  border-collapse: collapse;
+  font-size: 14px;
+}
+.customers-table th,
+.customers-table td {
+  padding: 12px 14px;
+  border-bottom: 1px solid #eee;
+  text-align: left;
+  vertical-align: middle;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+/* Sticky header */
+.customers-table thead th {
+  position: sticky; top: 0; z-index: 10;
+  background: #f9fafb; color: #374151; font-weight: 600;
+  box-shadow: inset 0 -1px 0 #e5e7eb;
+}
+
+/* Sortable header UX */
+.customers-table thead th:nth-child(n+2) { cursor: pointer; }
+.customers-table thead th:nth-child(n+2):hover { background: #f3f4f6; }
+
+/* Hover */
+.customers-table tbody tr:hover { background: #fafbfd; }
+
+/* Column sizing: 1 checkbox | 2 Customer | 3 Score | 4 Email | 5 Last message | 6 Added by */
+.customers-table th:nth-child(1),
+.customers-table td:nth-child(1) { width: 44px; }
+
+.customers-table th:nth-child(2),
+.customers-table td:nth-child(2) {
+  min-width: 280px;
+  padding-right: 36px; /* visual gap before Score */
+}
+
+.customers-table th:nth-child(3),
+.customers-table td:nth-child(3) {
+  width: 96px;
+  padding-left: 6px;
+  text-align: center;
+}
+
+.customers-table th:nth-child(4),
+.customers-table td:nth-child(4) {
+  width: 34%;
+  min-width: 320px;
+}
+
+.customers-table th:nth-child(5),
+.customers-table td:nth-child(5) {
+  width: 22%;
+  min-width: 240px;
+}
+
+.customers-table th:nth-child(6),
+.customers-table td:nth-child(6) {
+  width: 14%;
+  min-width: 170px;
+}
+
+/* Cells w/ media */
+.customer-cell {
+  display: flex; align-items: center; gap: 8px; min-width: 0;
+}
+.avatar { width: 32px; height: 32px; border-radius: 50%; }
+.customer-cell > div { min-width: 0; }
+.cust-name, .cust-sub { display: block; overflow: hidden; text-overflow: ellipsis; }
+.cust-name { font-weight: 600; }
+.cust-sub  { color: #6b7280; font-size: 12px; }
+
+.added-by-cell { display: flex; align-items: center; gap: 6px; color: #374151; }
+.user-icon { width: 16px; height: 16px; opacity: .7; }
